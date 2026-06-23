@@ -1,21 +1,26 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import colorchooser
 
 # Quando mouse é pressionado
 def iniciar_figura_nova(event): 
     global figura_nova
     if tipo_figura_var.get() == 'Linha':
         figura_nova = ("linha", (event.x, event.y, event.x, event.y))
-    else :
+    elif tipo_figura_var.get() == "Rabisco" :
         figura_nova = ("rabisco", [(event.x, event.y)])
+    elif tipo_figura_var.get() == "Retangulo":
+        figura_nova = ("retangulo", (event.x, event.y, event.x, event.y))
 
 # Quando mouse é movido com o botão pressionado
 def atualizar_figura_nova(event):
     global figura_nova
     if figura_nova[0] == "rabisco":
         figura_nova[1].append((event.x, event.y))
-    else : # figura_nova[0] == "linha"
+    elif figura_nova[0] == "linha":
         figura_nova = ("linha", (figura_nova[1][0], figura_nova[1][1], event.x, event.y))
+    elif figura_nova[0] == "retangulo":
+        figura_nova = ("retangulo", (figura_nova[1][0], figura_nova[1][1], event.x, event.y))
     desenhar_figuras()
     desenhar_figura_nova()
 
@@ -28,24 +33,28 @@ def incluir_figura_nova(event):
 def desenhar_figuras():
     canvas.delete("all")
     for fig, values in figuras:
-        if fig == "linha":
-            canvas.create_line(values[0], values[1], values[2], values[3])
-        else : # fig == "rabisco"
+        if fig == "rabisco":
             canvas.create_line(values)
-
+        elif fig =="linha":
+             canvas.create_line(values[0], values[1], values[2], values[3])
+        elif fig =="retangulo":
+             canvas.create_rectangle(values[0], values[1], values[2], values[3])
+             
 def desenhar_figura_nova():
     fig, values = figura_nova
     if fig == "linha":
         canvas.create_line(values[0], values[1], values[2], values[3], dash=(4, 2))
-    else : # fig == "rabisco"
+    elif fig == "rabisco" : 
         canvas.create_line(values, dash=(4, 2))
+    elif fig == "retangulo":
+        canvas.create_rectangle(values[0], values[1], values[2], values[3], dash=(4, 2))
 
 def incompleta(figura):
     fig, values = figura
-    if fig == "linha":
+    if fig == "rabisco":
+        return len(values) <= 1   
+    else : 
         return (values[0], values[1]) == (values[2], values[3])
-    else : # fig == "rabisco"
-        return len(values) <= 1
 
 def desfazer(event=None):
     if figuras:
@@ -68,16 +77,18 @@ paddings = {'padx': 5, 'pady': 5}
 # label
 label = ttk.Label(frame,  text='Escolha se vai desenhar linha ou Rabisco:')
 label.grid(column=0, row=0, sticky=W, **paddings)
+label2 = ttk.Label(frame, text="Escolha a cor:" )
+label2.grid(column=2, row=0, sticky=W, **paddings )
 
 # option menu
 tipo_figura_var = StringVar(root) # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
 option_menu = ttk.OptionMenu(frame, tipo_figura_var,
-                             'Linha', 'Linha', 'Rabisco')
+                             'Linha', 'Linha', 'Rabisco', "Retangulo")
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
 # Área de desenho
-canvas = Canvas(frame, bg='white', width=600, height=600)
-canvas.grid(column=0, row=1, columnspan=2, sticky=W, **paddings)
+canvas = Canvas(frame, bg='white', width=1200, height=1200)
+canvas.grid(column=0, row=1, columnspan=10, sticky=W, **paddings)
 
 frame.pack()
 
