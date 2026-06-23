@@ -14,6 +14,8 @@ def iniciar_figura_nova(event):
         figura_nova = ("retangulo", (event.x, event.y, event.x, event.y))
     elif tipo_figura_var.get() == "Oval":
         figura_nova = ("oval", (event.x, event.y, event.x, event.y))
+    elif tipo_figura_var.get() == "Circulo":
+        figura_nova = ("circulo", (event.x, event.y, event.x, event.y))
 
 
 # Quando mouse é movido com o botão pressionado
@@ -33,6 +35,24 @@ def atualizar_figura_nova(event):
         )
     elif figura_nova[0] == "oval":
         figura_nova = ("oval", (figura_nova[1][0], figura_nova[1][1], event.x, event.y))
+    elif figura_nova[0] == "circulo":
+        x1, y1, _, _ = figura_nova[1]
+        dx = event.x - x1
+        dy = event.y - y1
+        size = max(abs(dx), abs(dy))
+
+        if dx >= 0:
+            x2 = x1 + size
+        else:
+            x2 = x1 - size
+        
+        # Define o novo y2 (para baixo ou para cima)
+        if dy >= 0:
+            y2 = y1 + size
+        else:
+            y2 = y1 - size
+
+        figura_nova = ("circulo", (x1, y1, x2, y2))
     desenhar_figuras()
     desenhar_figura_nova()
 
@@ -57,6 +77,8 @@ def desenhar_figuras():
             canvas.create_rectangle(values[0], values[1], values[2], values[3])
         elif fig == "oval":
             canvas.create_oval(values[0], values[1], values[2], values[3])
+        elif fig == "circulo":
+            canvas.create_oval(values[0], values[1], values[2], values[3])
 
 
 def desenhar_figura_nova():
@@ -68,6 +90,8 @@ def desenhar_figura_nova():
     elif fig == "retangulo":
         canvas.create_rectangle(values[0], values[1], values[2], values[3], dash=(4, 2))
     elif fig == "oval":
+        canvas.create_oval(values[0], values[1], values[2], values[3], dash=(4, 2))
+    elif fig == "circulo":
         canvas.create_oval(values[0], values[1], values[2], values[3], dash=(4, 2))
 
 
@@ -110,7 +134,7 @@ tipo_figura_var = StringVar(
     root
 )  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
 option_menu = ttk.OptionMenu(
-    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval"
+    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo"
 )
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
