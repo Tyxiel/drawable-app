@@ -168,30 +168,20 @@ def incompleta(figura):
 def cores_preechimento():
     global cor_preechimento_atual
     cor_selecionada = colorchooser.askcolor(title="Escolha a cor de preenchimento")
-<<<<<<< Updated upstream
-    if cor_selecionada[1]:
-        cor_preechimento_atual = cor_selecionada[1]
-
-=======
     if cor_selecionada[1]: 
         cor_preechimento_atual = cor_selecionada[1] 
         botao_cor_preenchimento.config(bg = cor_preechimento_atual)
->>>>>>> Stashed changes
+
 
 def cores_bordas():
     global cor_borda_atual
     cor_borda_selecionada = colorchooser.askcolor(
-        title="Escolha a cor de preenchimento"
-    )
+        title="Escolha a cor de preenchimento")
     if cor_borda_selecionada[1]:
         cor_borda_atual = cor_borda_selecionada[1]
-<<<<<<< Updated upstream
-
-
-=======
         botao_cor_borda.config(bg = cor_borda_atual)
         
->>>>>>> Stashed changes
+
 def desfazer(event=None):
     if figuras:
         figuras.pop()
@@ -220,43 +210,24 @@ label2 = ttk.Label(frame, text="Escolha a cor:")
 label2.grid(column=2, row=0, sticky=W, **paddings)
 
 # option menu
-tipo_figura_var = StringVar(
-    root
-)  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
+tipo_figura_var = StringVar(root)  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
 option_menu = ttk.OptionMenu(
-    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo"
-)
+    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo")
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
 
 # cores preechimento
-<<<<<<< Updated upstream
-cor_preechimento_atual = ""
-label_cores_internas = ttk.Label(frame, text="Escolha a cor de preenchimento:")
-label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
-botao_cor_preenchimento = Button(
-    frame, text="cor preechimento", command=cores_preechimento
-)
-botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings)
-
-# cores bordas
-cor_borda_atual = "black"
-label_cores_bordas = ttk.Label(frame, text="Escolha a cor da borda:")
-label_cores_bordas.grid(column=4, row=0, sticky=W, **paddings)
-botao_cor_borda = Button(frame, text="cor borda", command=cores_bordas)
-=======
 cor_preechimento_atual = "white"
 label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:" )
 label_cores_internas.grid(column=2, row=0, sticky=W, **paddings )
-botao_cor_preenchimento = Button(frame, text ="                 ", command= cores_preechimento, background= cor_preechimento_atual)
+botao_cor_preenchimento = Button(frame, text ="", command= cores_preechimento, background= cor_preechimento_atual, width=10, height=1)
 botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings )
 
 # cores bordas
 cor_borda_atual = "black"
 label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
 label_cores_bordas.grid(column=4, row=0, sticky=W, **paddings )
-botao_cor_borda = Button(frame, text ="                 ", command= cores_bordas, background= cor_borda_atual)
->>>>>>> Stashed changes
+botao_cor_borda = Button(frame, text ="", command= cores_bordas, background= cor_borda_atual, width=10, height=1)
 botao_cor_borda.grid(column=5, row=0, sticky=W, **paddings)
 
 # Área de desenho
