@@ -1,7 +1,7 @@
 # drawable-app
 
 ## Grupo:
-- Samuel Campos
+- Samuel Campos (Tyxiel)
 - João Pedra Chaves
 - João Victor
 
