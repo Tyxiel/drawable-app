@@ -16,6 +16,7 @@ def iniciar_figura_nova(event):
         figura_nova = ("oval", (event.x, event.y, event.x, event.y))
     elif tipo_figura_var.get() == "Circulo":
         figura_nova = ("circulo", (event.x, event.y, event.x, event.y))
+    
 
 
 # Quando mouse é movido com o botão pressionado
@@ -189,6 +190,10 @@ def desfazer(event=None):
         canvas.delete("all")
         desenhar_figuras()
 
+def limpar_preenchimento():
+    global cor_preechimento_atual
+    cor_preechimento_atual = ""
+    botao_cor_preenchimento.config(bg = "SystemButtonFace")
 
 # ******* MAIN *******#
 
@@ -199,16 +204,20 @@ figura_nova = (
 
 root = Tk()
 root.title("Exemplo de aplicação")
+root.grid_rowconfigure(0, weight=1)
+root.grid_columnconfigure(0, weight=1)
 frame = Frame(root)
+frame.grid(row=0, column=0, sticky="nsew")
 
 # Widgets arranjados com Layout grid dentro de frame
 paddings = {"padx": 5, "pady": 5}
+frame.grid_rowconfigure(1, weight=1)
+frame.grid_columnconfigure(7, weight=1)
 
 # option menu
 label = ttk.Label(frame, text="Escolha a forma a ser desenhada:")
 label.grid(column=0, row=0, sticky=W, **paddings)
-label2 = ttk.Label(frame, text="Escolha a cor:")
-label2.grid(column=2, row=0, sticky=W, **paddings)
+
 
 # option menu
 tipo_figura_var = StringVar(
@@ -232,22 +241,33 @@ botao_cor_preenchimento = Button(
     width=10,
     height=1,
 )
-botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings)
+
+
+
+# cores preechimento
+cor_preechimento_atual = None
+label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:" )
+label_cores_internas.grid(column=2, row=0, sticky=W, **paddings )
+botao_cor_preenchimento = Button(frame, text ="", command= cores_preechimento, background= cor_preechimento_atual, width=10, height=1)
+botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings )
+botao_limpar_preenchimento = Button(frame, text="Limpar preenchimento", command= limpar_preenchimento)
+botao_limpar_preenchimento.grid(column=4, row= 0, sticky=W, **paddings)
+
 
 # cores bordas
 cor_borda_atual = "black"
 label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
 label_cores_bordas.grid(column=4, row=0, sticky=W, **paddings)
-botao_cor_borda = Button(
-    frame, text="", command=cores_bordas, background=cor_borda_atual, width=10, height=1
-)
-botao_cor_borda.grid(column=5, row=0, sticky=W, **paddings)
+label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings )
+botao_cor_borda = Button(frame, text ="", command= cores_bordas, background= cor_borda_atual, width=10, height=1)
+botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)
+
+
 
 # Área de desenho
-canvas = Canvas(frame, bg="white", width=1200, height=1200)
-canvas.grid(column=0, row=1, columnspan=10, sticky=W, **paddings)
+canvas = Canvas(frame, bg="white", width=800, height=600)
+canvas.grid(column=0, row=1, columnspan=10, sticky="nsew", **paddings)
 
-frame.pack()
 
 # Eventos de mouse associados ao canvas - com seus callbacks
 canvas.bind("<ButtonPress-1>", iniciar_figura_nova)
@@ -257,3 +277,5 @@ canvas.bind("<ButtonRelease-1>", incluir_figura_nova)
 root.bind("<Control-z>", desfazer)
 
 root.mainloop()
+
+canvas.create_polygon()
