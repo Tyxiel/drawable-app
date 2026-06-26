@@ -16,8 +16,6 @@ def iniciar_figura_nova(event):
         figura_nova = ("oval", (event.x, event.y, event.x, event.y))
     elif tipo_figura_var.get() == "Circulo":
         figura_nova = ("circulo", (event.x, event.y, event.x, event.y))
-    
-
 
 # Quando mouse é movido com o botão pressionado
 def atualizar_figura_nova(event):
@@ -56,7 +54,6 @@ def atualizar_figura_nova(event):
     desenhar_figuras()
     desenhar_figura_nova()
 
-
 # Quando mouse é solto
 def incluir_figura_nova(event):
     if not incompleta(
@@ -65,7 +62,6 @@ def incluir_figura_nova(event):
         fig, valores = figura_nova
         figuras.append((fig, (valores, cor_borda_atual, cor_preechimento_atual)))
     desenhar_figuras()
-
 
 def desenhar_figuras():
     canvas.delete("all")
@@ -107,7 +103,6 @@ def desenhar_figuras():
                 outline=cor_borda,
                 width=3,
             )
-
 
 def desenhar_figura_nova():
     fig, values = figura_nova
@@ -157,14 +152,12 @@ def desenhar_figura_nova():
             width=3,
         )
 
-
 def incompleta(figura):
     fig, values = figura
     if fig == "rabisco":
         return len(values) <= 1
     else:
         return (values[0], values[1]) == (values[2], values[3])
-
 
 def cores_preechimento():
     global cor_preechimento_atual
@@ -190,10 +183,12 @@ def desfazer(event=None):
         canvas.delete("all")
         desenhar_figuras()
 
+
 def limpar_preenchimento():
     global cor_preechimento_atual
     cor_preechimento_atual = ""
-    botao_cor_preenchimento.config(bg = "SystemButtonFace")
+    botao_cor_preenchimento.config(bg="SystemButtonFace")
+
 
 # ******* MAIN *******#
 
@@ -218,7 +213,6 @@ frame.grid_columnconfigure(7, weight=1)
 label = ttk.Label(frame, text="Escolha a forma a ser desenhada:")
 label.grid(column=0, row=0, sticky=W, **paddings)
 
-
 # option menu
 tipo_figura_var = StringVar(
     root
@@ -227,7 +221,6 @@ option_menu = ttk.OptionMenu(
     frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo"
 )
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
-
 
 # cores preechimento
 cor_preechimento_atual = "white"
@@ -242,32 +235,37 @@ botao_cor_preenchimento = Button(
     height=1,
 )
 
-
-
 # cores preechimento
 cor_preechimento_atual = None
-label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:" )
-label_cores_internas.grid(column=2, row=0, sticky=W, **paddings )
-botao_cor_preenchimento = Button(frame, text ="", command= cores_preechimento, background= cor_preechimento_atual, width=10, height=1)
-botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings )
-botao_limpar_preenchimento = Button(frame, text="Limpar preenchimento", command= limpar_preenchimento)
-botao_limpar_preenchimento.grid(column=4, row= 0, sticky=W, **paddings)
-
+label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:")
+label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
+botao_cor_preenchimento = Button(
+    frame,
+    text="",
+    command=cores_preechimento,
+    background=cor_preechimento_atual,
+    width=10,
+    height=1,
+)
+botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings)
+botao_limpar_preenchimento = Button(
+    frame, text="Limpar preenchimento", command=limpar_preenchimento
+)
+botao_limpar_preenchimento.grid(column=4, row=0, sticky=W, **paddings)
 
 # cores bordas
 cor_borda_atual = "black"
 label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
 label_cores_bordas.grid(column=4, row=0, sticky=W, **paddings)
-label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings )
-botao_cor_borda = Button(frame, text ="", command= cores_bordas, background= cor_borda_atual, width=10, height=1)
+label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings)
+botao_cor_borda = Button(
+    frame, text="", command=cores_bordas, background=cor_borda_atual, width=10, height=1
+)
 botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)
-
-
 
 # Área de desenho
 canvas = Canvas(frame, bg="white", width=800, height=600)
 canvas.grid(column=0, row=1, columnspan=10, sticky="nsew", **paddings)
-
 
 # Eventos de mouse associados ao canvas - com seus callbacks
 canvas.bind("<ButtonPress-1>", iniciar_figura_nova)
