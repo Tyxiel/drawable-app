@@ -242,12 +242,23 @@ botao_limpar_preenchimento.grid(column=4, row=0, sticky=W, **paddings)
 # cores bordas
 cor_borda_atual = "black"
 label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
+label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings)
+
+botao_cor_borda = Button(
+    frame, text="", command=cores_bordas, background=cor_borda_atual, width=10, height=1
+)
+botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)
+
+'''cor_borda_atual = "black"
+label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
 label_cores_bordas.grid(column=4, row=0, sticky=W, **paddings)
 label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings)
 botao_cor_borda = Button(
     frame, text="", command=cores_bordas, background=cor_borda_atual, width=10, height=1
 )
-botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)
+botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)'''
+
+#O botão "Limpar preenchimento" já estava a ocupar a coluna 4.
 
 # Área de desenho
 canvas = Canvas(frame, bg="white", width=800, height=600)
