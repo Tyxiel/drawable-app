@@ -258,7 +258,7 @@ botao_cor_borda = Button(
 )
 botao_cor_borda.grid(column=6, row=0, sticky=W, **paddings)'''
 
-#O botão "Limpar preenchimento" já estava a ocupar a coluna 4.
+#O botão "Limpar preenchimento" já estava ocupando a coluna 4.
 
 # Área de desenho
 canvas = Canvas(frame, bg="white", width=800, height=600)
