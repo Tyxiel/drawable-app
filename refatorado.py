@@ -4,76 +4,70 @@ from tkinter import colorchoose
 from abc import ABC, abstractmethod
 
 class Figura(ABC):
-  def __init__(self, cor_borda: str, cor_preenchimento: str, incompleta: bool):
-    self.cor_borda = cor_borda
+  def __init__(self, cor_borda, cor_preenchimento):
     self.cor_preenchimento = cor_preenchimento
-    self.incompleta = incompleta
-  
-  @abstractmethod
-  def desenhar(self):
-    pass
+    self.cor_borda = cor_borda
 
   @abstractmethod
-  def desenhar_previa(self):
-    pass
-
-  @abstractmethod
-  def atualizar(self):
-    pass
-
-  @abstractmethod
-  def adicionar_ponto(self):
-    pass
-  
-  @abstractmethod
-  def esta_incompleta(self):
+  def desenhar(self, canvas):
     pass
 
 class Linha(Figura):
-  def __init__(self, cor_borda: str, cor_preenchimento: str, incompleta: bool, pos_inicial, pos_final):
-    super().__init__(cor_borda, cor_preenchimento, incompleta)
-    self.pos_inicial = pos_inicial
-    self.pos_final = pos_final
+  def __init__(self, cor_borda, x1, y1, x2, y2):
+    super().__init__(cor_borda, cor_preenchimento = None)
+    self.coordenadas = (x1, y1, x2, y2)
+  def desenhar(self, canvas):
+    canvas.create_line(self.coordenadas, fill = self.cor_borda, width = 3)
 
-  def atualizar(self, pos_final):
-    self.pos_final = pos_final
+class Rabisco(Figura):
+  def __init__(self, cor_borda):  
+    super().__init__(cor_borda, cor_preenchimento = None)
+    self.pontos = []
+  def add_pontos(self, x, y):
+    self.pontos.append(x)
+    self.pontos.append(y)
+  def desenhar(self, canvas):
+    if len(self.pontos) >= 4:
+      canvas.create_line(self.pontos, fill = self.cor_borda, width = 3)
+  
+class Retangulo(Figura):
+    def __init__(self, cor_borda, cor_preenchimento, x1, y1, x2, y2):
+      super().__init__(cor_borda, cor_preenchimento)
+      self.coordenadas = (x1, y1, x2, y2)
+    def desenhar(self, canvas):
+     canvas.create_rectangle(self.coordenadas, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
 
-  def desenhar(self):
-    canvas.create_line((self.pos_inicial, self.pos_final), fill=self.cor_borda, width=3)
+class Oval(Figura):
+    def __init__(self, cor_borda, cor_preenchimento, x1, y1, x2, y2):
+      super().__init__(cor_borda, cor_preenchimento)
+      self.coordenadas = (x1, y1, x2, y2)
+    def desenhar(self, canvas):
+      canvas.create_oval(self.coordenadas, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
 
-  def desenhar_previa(self):
-    canvas.create_line((self.pos_inicial, self.pos_final), fill=self.cor_borda, width=3, dash=(4,2))
+class Circulo(Figura):
+    def __init__(self, cor_borda, cor_preenchimento, x1, y1, x2, y2):
+      super().__init__(cor_borda, cor_preenchimento)
+      self.coordenadas = [x1, y1, x2, y2]
+    def desenhar(self, canvas):
+      dx = self.coordenadas[2] - self.coordenadas[0]
+      dy = self.coordenadas[3] - self.coordenadas[1]
+      size = max(abs(dx), abs(dy))
+      if dx >= 0:
+         self.coordenadas[2] = self.coordenadas[0] + size
+      else:
+         self.coordenadas[2] = self.coordenadas[0] - size
 
-  def adicionar_ponto(self):
-    pass
+      if dy >= 0:
+            self.coordenadas[3] = self.coordenadas[1] + size
+      else:
+            self.coordenadas[3] = self.coordenadas[1] - size
+      canvas.create_oval(self.coordenadas, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
 
-  def esta_incompleta(self):
-    if self.pos_inicial == self.pos_final:
-      self.incompleta = True
-
-class Linha(Figura):
-  def __init__(self, cor_borda: str, cor_preenchimento: str, incompleta: bool, pos_inicial, pos_final):
-    super().__init__(cor_borda, cor_preenchimento, incompleta)
-    self.pos_inicial = pos_inicial
-    self.pos_final = pos_final
-
-  def atualizar(self, pos_final):
-    self.pos_final = pos_final
-
-  def desenhar(self):
-    canvas.create_line((self.pos_inicial, self.pos_final), fill=self.cor_borda, width=3)
-
-  def desenhar_previa(self):
-    canvas.create_line((self.pos_inicial, self.pos_final), fill=self.cor_borda, width=3, dash=(4,2))
-
-  def adicionar_ponto(self):
-    pass
-
-  def esta_incompleta(self):
-    if self.pos_inicial == self.pos_final:
-      self.incompleta = True
-
-
+class Poligonos(Figura):
+   def __init__(self, cor_borda, cor_preenchimento):
+      super().__init__(cor_borda, cor_preenchimento)
+      self.coordenadas = []
+  
 # ******* MAIN *******#
 
 figuras: list = []  # Todas as figuras desenhadas

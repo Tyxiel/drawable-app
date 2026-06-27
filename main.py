@@ -214,29 +214,14 @@ label = ttk.Label(frame, text="Escolha a forma a ser desenhada:")
 label.grid(column=0, row=0, sticky=W, **paddings)
 
 # option menu
-tipo_figura_var = StringVar(
-    root
-)  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
+tipo_figura_var = StringVar(root)  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
 option_menu = ttk.OptionMenu(
-    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo"
-)
+    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo")
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
-# cores preechimento
-cor_preechimento_atual = "white"
-label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:")
-label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
-botao_cor_preenchimento = Button(
-    frame,
-    text="",
-    command=cores_preechimento,
-    background=cor_preechimento_atual,
-    width=10,
-    height=1,
-)
 
 # cores preechimento
-cor_preechimento_atual = None
+cor_preechimento_atual = ""
 label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:")
 label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
 botao_cor_preenchimento = Button(
@@ -248,10 +233,11 @@ botao_cor_preenchimento = Button(
     height=1,
 )
 botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings)
-botao_limpar_preenchimento = Button(
-    frame, text="Limpar preenchimento", command=limpar_preenchimento
-)
+botao_limpar_preenchimento = Button(frame, text="Limpar preenchimento", command=limpar_preenchimento)
 botao_limpar_preenchimento.grid(column=4, row=0, sticky=W, **paddings)
+
+
+
 
 # cores bordas
 cor_borda_atual = "black"
