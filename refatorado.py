@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import colorchoose
 from abc import ABC, abstractmethod
+import math
 
 class Figura(ABC):
   def __init__(self, cor_borda, cor_preenchimento):
@@ -53,21 +54,45 @@ class Circulo(Figura):
       dy = self.coordenadas[3] - self.coordenadas[1]
       size = max(abs(dx), abs(dy))
       if dx >= 0:
-         self.coordenadas[2] = self.coordenadas[0] + size
+         x_final = self.coordenadas[0] + size
       else:
-         self.coordenadas[2] = self.coordenadas[0] - size
+         x_final = self.coordenadas[0] - size
 
       if dy >= 0:
-            self.coordenadas[3] = self.coordenadas[1] + size
+          y_final = self.coordenadas[1] + size
       else:
-            self.coordenadas[3] = self.coordenadas[1] - size
-      canvas.create_oval(self.coordenadas, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
+          y_final = self.coordenadas[1] - size
+      coordenadas_desenho = [self.coordenadas[0], self.coordenadas[1], x_final, y_final]
+      canvas.create_oval(coordenadas_desenho, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
 
-class Poligonos(Figura):
-   def __init__(self, cor_borda, cor_preenchimento):
+class Poligonos_Regular(Figura):
+    def __init__(self, cor_borda, cor_preenchimento, num_lados, x1, y1, x2, y2):
       super().__init__(cor_borda, cor_preenchimento)
-      self.coordenadas = []
-  
+      self.num_lados = num_lados
+      self.coordenadas = [x1, y1, x2, y2]
+      self.incremento = 2*math.pi/self.num_lados
+    def desenhar(self, canvas):
+      self.pontos = []
+      dx = self.coordenadas[2] - self.coordenadas[0]
+      dy = self.coordenadas[3] - self.coordenadas[1]
+      size = max(abs(dx), abs(dy))
+      if dx >= 0:
+         x_final = self.coordenadas[0] + size
+      else:
+         x_final = self.coordenadas[0] - size
+
+      if dy >= 0:
+            y_final = self.coordenadas[1] + size
+      else:
+            y_final = self.coordenadas[1] - size
+      self.raio = size/2
+      self.coord_centro = ((self.coordenadas[0] + x_final)/2 , (self.coordenadas[1] + y_final)/2)
+      angulo_inicial = -math.pi / 2
+      for n in range(self.num_lados):
+         self.angulovertice = angulo_inicial + (n * self.incremento)
+         self.pontos.append((self.coord_centro[0] + self.raio*math.cos(self.angulovertice)))
+         self.pontos.append(self.coord_centro[1] + self.raio*math.sin(self.angulovertice))
+      canvas.create_polygon(self.pontos, fill = self.cor_preenchimento, outline = self.cor_borda, width = 3)
 # ******* MAIN *******#
 
 figuras: list = []  # Todas as figuras desenhadas
