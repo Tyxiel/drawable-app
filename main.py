@@ -221,14 +221,14 @@ option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
 
 # cores preechimento
-cor_preechimento_atual = ""
+cor_preechimento_atual = None
 label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:")
 label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
 botao_cor_preenchimento = Button(
     frame,
     text="",
     command=cores_preechimento,
-    background=cor_preechimento_atual,
+    background=cor_preechimento_atual or "SystemButtonFace",
     width=10,
     height=1,
 )
