@@ -1,266 +1,95 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import colorchooser
-
-
-# Quando mouse é pressionado
-def iniciar_figura_nova(event):
-    global figura_nova
-    if tipo_figura_var.get() == "Linha":
-        figura_nova = ("linha", (event.x, event.y, event.x, event.y))
-    elif tipo_figura_var.get() == "Rabisco":
-        figura_nova = ("rabisco", [(event.x, event.y)])
-    elif tipo_figura_var.get() == "Retangulo":
-        figura_nova = ("retangulo", (event.x, event.y, event.x, event.y))
-    elif tipo_figura_var.get() == "Oval":
-        figura_nova = ("oval", (event.x, event.y, event.x, event.y))
-    elif tipo_figura_var.get() == "Circulo":
-        figura_nova = ("circulo", (event.x, event.y, event.x, event.y))
-
-# Quando mouse é movido com o botão pressionado
-def atualizar_figura_nova(event):
-    global figura_nova
-    if figura_nova[0] == "rabisco":
-        figura_nova[1].append((event.x, event.y))
-    elif figura_nova[0] == "linha":
-        figura_nova = (
-            "linha",
-            (figura_nova[1][0], figura_nova[1][1], event.x, event.y),
-        )
-    elif figura_nova[0] == "retangulo":
-        figura_nova = (
-            "retangulo",
-            (figura_nova[1][0], figura_nova[1][1], event.x, event.y),
-        )
-    elif figura_nova[0] == "oval":
-        figura_nova = ("oval", (figura_nova[1][0], figura_nova[1][1], event.x, event.y))
-    elif figura_nova[0] == "circulo":
-        x1, y1, _, _ = figura_nova[1]
-        dx = event.x - x1
-        dy = event.y - y1
-        size = max(abs(dx), abs(dy))
-
-        if dx >= 0:
-            x2 = x1 + size
-        else:
-            x2 = x1 - size
-
-        if dy >= 0:
-            y2 = y1 + size
-        else:
-            y2 = y1 - size
-
-        figura_nova = ("circulo", (x1, y1, x2, y2))
-    desenhar_figuras()
-    desenhar_figura_nova()
-
-# Quando mouse é solto
-def incluir_figura_nova(event):
-    if not incompleta(
-        figura_nova
-    ):  # para evitar incluir figuras incompletas, como uma linha sem comprimento ou um rabisco com um único ponto
-        fig, valores = figura_nova
-        figuras.append((fig, (valores, cor_borda_atual, cor_preechimento_atual)))
-    desenhar_figuras()
-
-def desenhar_figuras():
-    canvas.delete("all")
-    for fig, dados in figuras:
-        values, cor_borda, cor_preechimento = dados
-        if fig == "rabisco":
-            canvas.create_line(values, fill=cor_borda, width=3)
-        elif fig == "linha":
-            canvas.create_line(
-                values[0], values[1], values[2], values[3], fill=cor_borda, width=3
-            )
-        elif fig == "retangulo":
-            canvas.create_rectangle(
-                values[0],
-                values[1],
-                values[2],
-                values[3],
-                fill=cor_preechimento,
-                outline=cor_borda,
-                width=3,
-            )
-        elif fig == "oval":
-            canvas.create_oval(
-                values[0],
-                values[1],
-                values[2],
-                values[3],
-                fill=cor_preechimento,
-                outline=cor_borda,
-                width=3,
-            )
-        elif fig == "circulo":
-            canvas.create_oval(
-                values[0],
-                values[1],
-                values[2],
-                values[3],
-                fill=cor_preechimento,
-                outline=cor_borda,
-                width=3,
-            )
-
-def desenhar_figura_nova():
-    fig, values = figura_nova
-    if fig == "linha":
-        canvas.create_line(
-            values[0],
-            values[1],
-            values[2],
-            values[3],
-            dash=(4, 2),
-            fill=cor_borda_atual,
-            width=3,
-        )
-    elif fig == "rabisco":
-        canvas.create_line(values, dash=(4, 2), fill=cor_borda_atual, width=3)
-    elif fig == "retangulo":
-        canvas.create_rectangle(
-            values[0],
-            values[1],
-            values[2],
-            values[3],
-            dash=(4, 2),
-            fill=cor_preechimento_atual,
-            outline=cor_borda_atual,
-            width=3,
-        )
-    elif fig == "oval":
-        canvas.create_oval(
-            values[0],
-            values[1],
-            values[2],
-            values[3],
-            dash=(4, 2),
-            fill=cor_preechimento_atual,
-            outline=cor_borda_atual,
-            width=3,
-        )
-    elif fig == "circulo":
-        canvas.create_oval(
-            values[0],
-            values[1],
-            values[2],
-            values[3],
-            dash=(4, 2),
-            fill=cor_preechimento_atual,
-            outline=cor_borda_atual,
-            width=3,
-        )
-
-def incompleta(figura):
-    fig, values = figura
-    if fig == "rabisco":
-        return len(values) <= 1
-    else:
-        return (values[0], values[1]) == (values[2], values[3])
-
-def cores_preechimento():
-    global cor_preechimento_atual
-    cor_selecionada = colorchooser.askcolor(title="Escolha a cor de preenchimento")
-    if cor_selecionada[1]:
-        cor_preechimento_atual = cor_selecionada[1]
-        botao_cor_preenchimento.config(bg=cor_preechimento_atual)
-
-
-def cores_bordas():
-    global cor_borda_atual
-    cor_borda_selecionada = colorchooser.askcolor(
-        title="Escolha a cor de preenchimento"
-    )
-    if cor_borda_selecionada[1]:
-        cor_borda_atual = cor_borda_selecionada[1]
-        botao_cor_borda.config(bg=cor_borda_atual)
-
-
-def desfazer(event=None):
-    if figuras:
-        figuras.pop()
-        canvas.delete("all")
-        desenhar_figuras()
-
-
-def limpar_preenchimento():
-    global cor_preechimento_atual
-    cor_preechimento_atual = ""
-    botao_cor_preenchimento.config(bg="SystemButtonFace")
-
-
-# ******* MAIN *******#
-
-figuras = []  # Todas as figuras desenhadas
-figura_nova = (
-    None  # Figura que está sendo desenhada, mas ainda não foi incluída em figuras
+from tkinter import ttk, colorchooser
+from figuras import (
+    Linha, Rabisco, Retangulo, Oval, Circulo, PoligonoRegular
 )
 
+# ---------- Variáveis globais ----------
+figuras = []          # lista de figuras já finalizadas (instâncias de Figura)
+figura_nova = None    # figura em construção (instância de Figura) ou None
+cor_borda_atual = "black"
+cor_preenchimento_atual = None   # None significa transparente
+
+# ---------- Funções (a serem implementadas) ----------
+def escolher_cor(tipo):
+    pass
+
+def limpar_preenchimento():
+    pass
+
+def desenhar_todas():
+    pass
+
+def is_figura_degenerada(fig):
+    pass
+
+def iniciar_figura_nova(event):
+    pass
+
+def atualizar_figura_nova(event):
+    pass
+
+def incluir_figura_nova(event):
+    pass
+
+def desfazer(event=None):
+    pass
+
+# ---------- Configuração da janela ----------
 root = Tk()
-root.title("Exemplo de aplicação")
+root.title("Paint Orientado a Objetos")
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
+
 frame = Frame(root)
 frame.grid(row=0, column=0, sticky="nsew")
-
-# Widgets arranjados com Layout grid dentro de frame
 paddings = {"padx": 5, "pady": 5}
 frame.grid_rowconfigure(1, weight=1)
 frame.grid_columnconfigure(7, weight=1)
 
-# option menu
-label = ttk.Label(frame, text="Escolha a forma a ser desenhada:")
-label.grid(column=0, row=0, sticky=W, **paddings)
+# ---------- Widgets ----------
+label_forma = ttk.Label(frame, text="Escolha a forma:")
+label_forma.grid(column=0, row=0, sticky=W, **paddings)
 
-# option menu
-tipo_figura_var = StringVar(root)  # Guarda o tipo de figura selecionado no option menu (linha ou rabisco)
-option_menu = ttk.OptionMenu(
-    frame, tipo_figura_var, "Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo")
+tipo_figura_var = StringVar(root)
+tipo_figura_var.set("Linha")
+opcoes = ["Linha", "Rabisco", "Retangulo", "Oval", "Circulo", "Poligono"]
+option_menu = ttk.OptionMenu(frame, tipo_figura_var, *opcoes)
 option_menu.grid(column=1, row=0, sticky=W, **paddings)
 
+label_lados = ttk.Label(frame, text="Lados:")
+label_lados.grid(column=2, row=0, sticky=W, **paddings)
+num_lados_var = IntVar(root)
+num_lados_var.set(5)
+spin_lados = Spinbox(frame, from_=3, to=20, textvariable=num_lados_var, width=5)
+spin_lados.grid(column=3, row=0, sticky=W, **paddings)
 
-# cores preechimento
-cor_preechimento_atual = None
-label_cores_internas = ttk.Label(frame, text="Cor de preenchimento:")
-label_cores_internas.grid(column=2, row=0, sticky=W, **paddings)
-botao_cor_preenchimento = Button(
-    frame,
-    text="",
-    command=cores_preechimento,
-    background=cor_preechimento_atual or "SystemButtonFace",
-    width=10,
-    height=1,
-)
-botao_cor_preenchimento.grid(column=3, row=0, sticky=W, **paddings)
-botao_limpar_preenchimento = Button(frame, text="Limpar preenchimento", command=limpar_preenchimento)
-botao_limpar_preenchimento.grid(column=4, row=0, sticky=W, **paddings)
+label_preench = ttk.Label(frame, text="Preenchimento:")
+label_preench.grid(column=4, row=0, sticky=W, **paddings)
 
+botao_cor_preench = Button(frame, text="", command=lambda: escolher_cor("preenchimento"),
+                           bg="SystemButtonFace", width=8)
+botao_cor_preench.grid(column=5, row=0, sticky=W, **paddings)
 
+botao_limpar_preench = Button(frame, text="Limpar", command=limpar_preenchimento)
+botao_limpar_preench.grid(column=6, row=0, sticky=W, **paddings)
 
+label_borda = ttk.Label(frame, text="Borda:")
+label_borda.grid(column=7, row=0, sticky=W, **paddings)
 
-# cores bordas
-cor_borda_atual = "black"
-label_cores_bordas = ttk.Label(frame, text="Cor da borda:")
-label_cores_bordas.grid(column=5, row=0, sticky=W, **paddings)
-label_cores_bordas.grid(column=6, row=0, sticky=W, **paddings)
-botao_cor_borda = Button(
-    frame, text="", command=cores_bordas, background=cor_borda_atual, width=10, height=1
-)
-botao_cor_borda.grid(column=7, row=0, sticky=W, **paddings)
+botao_cor_borda = Button(frame, text="", command=lambda: escolher_cor("borda"),
+                         bg=cor_borda_atual, width=8)
+botao_cor_borda.grid(column=8, row=0, sticky=W, **paddings)
 
-
-# Área de desenho
 canvas = Canvas(frame, bg="white", width=800, height=600)
 canvas.grid(column=0, row=1, columnspan=10, sticky="nsew", **paddings)
 
-# Eventos de mouse associados ao canvas - com seus callbacks
+# ---------- Bindings ----------
 canvas.bind("<ButtonPress-1>", iniciar_figura_nova)
 canvas.bind("<B1-Motion>", atualizar_figura_nova)
 canvas.bind("<ButtonRelease-1>", incluir_figura_nova)
-
 root.bind("<Control-z>", desfazer)
 
+# ---------- Inicialização ----------
+desenhar_todas()
 root.mainloop()
-
-canvas.create_polygon()
