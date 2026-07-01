@@ -8,7 +8,7 @@ from figuras import (
 figuras = []          # lista de figuras já finalizadas (instâncias de Figura)
 figura_nova = None    # figura em construção (instância de Figura) ou None
 cor_borda_atual = "black"
-cor_preenchimento_atual = None   # None significa transparente
+cor_preenchimento_atual = ""   # None significa transparente
 
 # ---------- Funçoes implementadas ----------
 
@@ -140,7 +140,7 @@ frame = Frame(root)
 frame.grid(row=0, column=0, sticky="nsew")
 paddings = {"padx": 5, "pady": 5}
 frame.grid_rowconfigure(1, weight=1)
-frame.grid_columnconfigure(7, weight=1)
+frame.grid_columnconfigure(8, weight=1)
 
 # ---------- Widgets ----------
 label_forma = ttk.Label(frame, text="Escolha a forma:")

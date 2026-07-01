@@ -128,8 +128,7 @@ class PoligonoRegular(Figura):
             self.vertices.append((x, y))
 
     def desenhar(self, canvas, dash=False):
-        # A função create_polygon aceita uma lista de coordenadas alternadas ou tuplas.
-        # Vamos passar como lista plana.
+        print(self.cor_preenchimento)
         pontos_planos = []
         for x, y in self.vertices:
             pontos_planos.extend([x, y])
