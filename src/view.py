@@ -25,11 +25,19 @@ class DrawingView:
 
         self.tipo_figura_var = StringVar(value="Linha")
         opcoes = ["Linha", "Rabisco", "Retangulo", "Oval", "Circulo", "Poligono"]
-        ttk.OptionMenu(self.frame, self.tipo_figura_var, *opcoes).grid(column=1, row=0, sticky=W, **paddings)
+        self.menu_forma = ttk.OptionMenu(self.frame, self.tipo_figura_var, *opcoes)
+        self.menu_forma.grid(column=1, row=0, sticky=W, **paddings)
 
-        ttk.Label(self.frame, text="Lados:").grid(column=2, row=0, sticky=W, **paddings)
+        # Label e Spinbox dos lados – inicialmente invisíveis (só aparecem se "Poligono")
+        self.label_lados = ttk.Label(self.frame, text="Lados:")
+        self.label_lados.grid(column=2, row=0, sticky=W, **paddings)
         self.num_lados_var = IntVar(value=5)
-        Spinbox(self.frame, from_=3, to=20, textvariable=self.num_lados_var, width=5).grid(column=3, row=0, sticky=W, **paddings)
+        vcmd = (self.root.register(self._validar_lados), '%P')
+        self.spin_lados = Spinbox(
+            self.frame, from_=3, to=20, textvariable=self.num_lados_var,
+            width=5, validate='focusout', validatecommand=vcmd
+        )
+        self.spin_lados.grid(column=3, row=0, sticky=W, **paddings)
 
         ttk.Label(self.frame, text="Preenchimento:").grid(column=4, row=0, sticky=W, **paddings)
         self.botao_cor_preench = Button(self.frame, text="", bg="SystemButtonFace", width=8,
@@ -44,6 +52,17 @@ class DrawingView:
 
         self.canvas = Canvas(self.frame, bg="white", width=800, height=600)
         self.canvas.grid(column=0, row=1, columnspan=10, sticky="nsew", **paddings)
+        self.tipo_figura_var.trace('w', self._atualizar_visibilidade_lados)
+        self._atualizar_visibilidade_lados()  # ajusta a visibilidade inicial
+
+    def _atualizar_visibilidade_lados(self, *args):
+        """Mostra os widgets de lados somente se 'Poligono' estiver selecionado."""
+        if self.tipo_figura_var.get() == "Poligono":
+            self.label_lados.grid()
+            self.spin_lados.grid()
+        else:
+            self.label_lados.grid_remove()
+            self.spin_lados.grid_remove()
 
     def _configurar_bindings(self):
         self.canvas.bind("<ButtonPress-1>", lambda event: self.controller.iniciar_figura_nova(event))
@@ -68,3 +87,12 @@ class DrawingView:
 
     def resetar_botao_preenchimento(self):
         self.botao_cor_preench.config(bg="SystemButtonFace")
+
+    def _validar_lados(self, P):
+        """Retorna True se o novo valor (P) for um inteiro >= 3."""
+        if P.strip() == "":
+            return False
+        try:
+            return int(P) >= 3
+        except ValueError:
+            return False
