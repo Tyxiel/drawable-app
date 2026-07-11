@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import ttk
 
+
 class DrawingView:
     def __init__(self, root, controller):
         self.root = root
@@ -24,7 +25,7 @@ class DrawingView:
         ttk.Label(self.frame, text="Escolha a forma:").grid(column=0, row=0, sticky=W, **paddings)
 
         self.tipo_figura_var = StringVar(value="Linha")
-        opcoes = ["Linha", "Rabisco", "Retangulo", "Oval", "Circulo", "Poligono"]
+        opcoes = ["Linha", "Linha", "Rabisco", "Retangulo", "Oval", "Circulo", "Poligono"]
         self.menu_forma = ttk.OptionMenu(self.frame, self.tipo_figura_var, *opcoes)
         self.menu_forma.grid(column=1, row=0, sticky=W, **paddings)
 
@@ -50,8 +51,14 @@ class DrawingView:
                                       command=lambda: self.controller.escolher_cor("borda"))
         self.botao_cor_borda.grid(column=8, row=0, sticky=W, **paddings)
 
+        self.botao_salvar = Button(self.frame, text="salvar", command=None)
+        self.botao_salvar.grid(column=9, row=0, sticky=W, **paddings)
+        
+        self.botao_abrir = Button(self.frame, text="abrir", command=None)
+        self.botao_abrir.grid(column=11, row=0, sticky=W, **paddings)
+
         self.canvas = Canvas(self.frame, bg="white", width=800, height=600)
-        self.canvas.grid(column=0, row=1, columnspan=10, sticky="nsew", **paddings)
+        self.canvas.grid(column=0, row=1, columnspan=12, sticky="nsew", **paddings)
         self.tipo_figura_var.trace('w', self._atualizar_visibilidade_lados)
         self._atualizar_visibilidade_lados()  # ajusta a visibilidade inicial
 
@@ -69,6 +76,7 @@ class DrawingView:
         self.canvas.bind("<B1-Motion>", lambda event: self.controller.atualizar_figura_nova(event))
         self.canvas.bind("<ButtonRelease-1>", lambda event: self.controller.incluir_figura_nova(event))
         self.root.bind("<Control-z>", lambda event: self.controller.desfazer(event))
+
 
     def desenhar_todas(self, figuras, figura_nova):
         """Limpa o canvas e redesenha todas as figuras e a pré-visualização tracejada."""
@@ -96,3 +104,8 @@ class DrawingView:
             return int(P) >= 3
         except ValueError:
             return False
+        
+    def configurar_controller(self, controller):
+        """Método chamado pelo main.py para configurar o controller e ativar o botão"""
+        self.controller = controller
+        self.botao_salvar.config(command=self.controller.salvar)

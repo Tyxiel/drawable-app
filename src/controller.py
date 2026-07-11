@@ -1,6 +1,9 @@
 # controller.py
 from tkinter import colorchooser
 from src.figuras import Linha, Rabisco, Retangulo, Oval, Circulo, PoligonoRegular
+from tkinter import *
+import pickle
+from tkinter import filedialog
 
 class DrawingController:
     def __init__(self, model, view):
@@ -76,3 +79,16 @@ class DrawingController:
         if self.model.figuras:
             self.model.figuras.pop()
             self.view.desenhar_todas(self.model.figuras, self.model.figura_nova)
+    
+    #----- Persistencia ----
+    def salvar(self):
+        caminho = filedialog.asksaveasfilename(
+            defaultextension= "*.pkl",
+            filetypes=[("Arquivos do Aplicativo de desenho", "*.pkl")],
+            title="Escolha onde salvar seu desenho"
+        )
+        if caminho:
+            with open(caminho, "wb") as arquivo:
+                pickle.dump(self.model.figuras, arquivo)
+        
+    #def abrir_arquivo(self):
