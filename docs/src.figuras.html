@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.figuras</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.figuras</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ctyxie%5Csource%5Crepos%5Cdrawable-app%5Csrc%5Cfiguras.py">c:\users\tyxie\source\repos\drawable-app\src\figuras.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="math.html">math</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.figuras.html#Figura">Figura</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.figuras.html#Circulo">Circulo</a>
+</dt><dt class="heading-text"><a href="src.figuras.html#Linha">Linha</a>
+</dt><dt class="heading-text"><a href="src.figuras.html#Oval">Oval</a>
+</dt><dt class="heading-text"><a href="src.figuras.html#PoligonoRegular">PoligonoRegular</a>
+</dt><dt class="heading-text"><a href="src.figuras.html#Rabisco">Rabisco</a>
+</dt><dt class="heading-text"><a href="src.figuras.html#Retangulo">Retangulo</a>
+</dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Circulo">class <strong>Circulo</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Circulo">Circulo</a>(cor_borda,&nbsp;cor_preenchimento,&nbsp;x1,&nbsp;y1,&nbsp;x2,&nbsp;y2)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;um&nbsp;<a href="#Circulo">Circulo</a>&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;receber&nbsp;os&nbsp;pontos&nbsp;iniciais&nbsp;e&nbsp;finais&nbsp;a&nbsp;partir&nbsp;do&nbsp;clique&nbsp;do&nbsp;mouse&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Circulo">Circulo</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Circulo-__init__"><strong>__init__</strong></a>(self, cor_borda, cor_preenchimento, x1, y1, x2, y2)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#Circulo">Circulo</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;borda&nbsp;da&nbsp;figura&nbsp;<a href="#Circulo">Circulo</a>.<br>
+@param&nbsp;cor_preenchimento:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;interna&nbsp;da&nbsp;figura&nbsp;<a href="#Circulo">Circulo</a>.<br>
+@param&nbsp;x1:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;y1:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;x2:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;final&nbsp;do&nbsp;arrasto.<br>
+@param&nbsp;y2:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;final&nbsp;do&nbsp;arrasto.</span></dd></dl>
+
+<dl><dt><a name="Circulo-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Circulo-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;o&nbsp;<a href="#Circulo">Circulo</a>&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Figura">class <strong>Figura</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Figura">Figura</a>(cor_borda,&nbsp;cor_preenchimento)<br>
+&nbsp;<br>
+Classe&nbsp;abstrata&nbsp;que&nbsp;serve&nbsp;de&nbsp;base&nbsp;e&nbsp;define&nbsp;a&nbsp;interface&nbsp;comum&nbsp;para&nbsp;todas&nbsp;as&nbsp;figuras&nbsp;geométricas&nbsp;do&nbsp;sistema.<br>
+&nbsp;<br>
+Responsabilidade:&nbsp;Definir&nbsp;propriedades&nbsp;básicas&nbsp;de&nbsp;cores&nbsp;e&nbsp;os&nbsp;métodos&nbsp;obrigatórios&nbsp;de&nbsp;desenho&nbsp;e&nbsp;atualização.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves&nbsp;<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Figura-__init__"><strong>__init__</strong></a>(self, cor_borda, cor_preenchimento)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;abstrata&nbsp;<a href="#Figura">Figura</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;linha&nbsp;externa&nbsp;da&nbsp;figura.<br>
+@param&nbsp;cor_preenchimento:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;interna&nbsp;da&nbsp;figura&nbsp;(vazio&nbsp;para&nbsp;transparente).</span></dd></dl>
+
+<dl><dt><a name="Figura-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Figura-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;a&nbsp;figura&nbsp;geométrica&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'atualizar', 'desenhar'})</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Linha">class <strong>Linha</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Linha">Linha</a>(cor_borda,&nbsp;x1,&nbsp;y1,&nbsp;x2,&nbsp;y2)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;uma&nbsp;linha&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;receber&nbsp;os&nbsp;pontos&nbsp;iniciais&nbsp;e&nbsp;finais&nbsp;a&nbsp;partir&nbsp;do&nbsp;clique&nbsp;do&nbsp;mouse&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Linha">Linha</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Linha-__init__"><strong>__init__</strong></a>(self, cor_borda, x1, y1, x2, y2)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#Linha">Linha</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;figura&nbsp;<a href="#Linha">Linha</a>.<br>
+@param&nbsp;x1:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;y1:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;x2:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;final&nbsp;do&nbsp;arrasto.<br>
+@param&nbsp;y2:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;final&nbsp;do&nbsp;arrasto.</span></dd></dl>
+
+<dl><dt><a name="Linha-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Linha-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;a&nbsp;<a href="#Linha">Linha</a>&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Oval">class <strong>Oval</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Oval">Oval</a>(cor_borda,&nbsp;cor_preenchimento,&nbsp;x1,&nbsp;y1,&nbsp;x2,&nbsp;y2)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;um&nbsp;<a href="#Oval">Oval</a>&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;receber&nbsp;os&nbsp;pontos&nbsp;iniciais&nbsp;e&nbsp;finais&nbsp;a&nbsp;partir&nbsp;do&nbsp;clique&nbsp;do&nbsp;mouse&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Oval">Oval</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Oval-__init__"><strong>__init__</strong></a>(self, cor_borda, cor_preenchimento, x1, y1, x2, y2)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#Oval">Oval</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;borda&nbsp;da&nbsp;figura&nbsp;<a href="#Oval">Oval</a>.<br>
+@param&nbsp;cor_preenchimento:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;interna&nbsp;da&nbsp;figura&nbsp;<a href="#Oval">Oval</a>.<br>
+@param&nbsp;x1:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;y1:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;x2:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;final&nbsp;do&nbsp;arrasto.<br>
+@param&nbsp;y2:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;final&nbsp;do&nbsp;arrasto.</span></dd></dl>
+
+<dl><dt><a name="Oval-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Oval-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;o&nbsp;<a href="#Oval">Oval</a>&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="PoligonoRegular">class <strong>PoligonoRegular</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#PoligonoRegular">PoligonoRegular</a>(cor_borda,&nbsp;cor_preenchimento,&nbsp;num_lados,&nbsp;x1,&nbsp;y1,&nbsp;x2,&nbsp;y2)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;um&nbsp;poligono&nbsp;regular&nbsp;de&nbsp;N&nbsp;lados&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;Calcular&nbsp;as&nbsp;coordenadas&nbsp;dos&nbsp;vertices&nbsp;com&nbsp;base&nbsp;no&nbsp;raio&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#PoligonoRegular">PoligonoRegular</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PoligonoRegular-__init__"><strong>__init__</strong></a>(self, cor_borda, cor_preenchimento, num_lados, x1, y1, x2, y2)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#PoligonoRegular">PoligonoRegular</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor:&nbsp;str&nbsp;com&nbsp;a&nbsp;cor&nbsp;da&nbsp;borda&nbsp;do&nbsp;poligono.<br>
+@param&nbsp;preenchimento:&nbsp;str&nbsp;com&nbsp;a&nbsp;cor&nbsp;interna&nbsp;(vazio&nbsp;para&nbsp;transparente).<br>
+@param&nbsp;lados:&nbsp;int&nbsp;com&nbsp;o&nbsp;numero&nbsp;de&nbsp;lados&nbsp;(minimo&nbsp;3).<br>
+@param&nbsp;x1:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;inicial&nbsp;do&nbsp;clique.<br>
+@param&nbsp;y1:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;inicial&nbsp;do&nbsp;clique.<br>
+@param&nbsp;x2:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;final&nbsp;do&nbsp;arrasto.<br>
+@param&nbsp;y2:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;final&nbsp;do&nbsp;arrasto.</span></dd></dl>
+
+<dl><dt><a name="PoligonoRegular-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="PoligonoRegular-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;o&nbsp;Poligono&nbsp;Regular&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Rabisco">class <strong>Rabisco</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Rabisco">Rabisco</a>(cor_borda)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;um&nbsp;desenho&nbsp;livre&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;receber&nbsp;todos&nbsp;os&nbsp;pontos&nbsp;que&nbsp;o&nbsp;mouse&nbsp;passar&nbsp;pressionado&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Rabisco">Rabisco</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Rabisco-__init__"><strong>__init__</strong></a>(self, cor_borda)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#Rabisco">Rabisco</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;figura&nbsp;<a href="#Rabisco">Rabisco</a>.</span></dd></dl>
+
+<dl><dt><a name="Rabisco-adicionar_ponto"><strong>adicionar_ponto</strong></a>(self, x, y)</dt><dd><span class="code">Adiciona&nbsp;linearmente&nbsp;as&nbsp;coordenadas&nbsp;X&nbsp;e&nbsp;Y&nbsp;na&nbsp;lista&nbsp;de&nbsp;pontos<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;capturada&nbsp;pelo&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;capturada&nbsp;pelo&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Rabisco-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;o&nbsp;desenho&nbsp;livre&nbsp;capturando&nbsp;os&nbsp;novos&nbsp;pontos&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Rabisco-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;o&nbsp;<a href="#Rabisco">Rabisco</a>&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Retangulo">class <strong>Retangulo</strong></a>(<a href="src.figuras.html#Figura">Figura</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Retangulo">Retangulo</a>(cor_borda,&nbsp;cor_preenchimento,&nbsp;x1,&nbsp;y1,&nbsp;x2,&nbsp;y2)<br>
+&nbsp;<br>
+Classe&nbsp;que&nbsp;representa&nbsp;um&nbsp;retangulo&nbsp;no&nbsp;sistema&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;receber&nbsp;os&nbsp;pontos&nbsp;iniciais&nbsp;e&nbsp;finais&nbsp;a&nbsp;partir&nbsp;do&nbsp;clique&nbsp;do&nbsp;mouse&nbsp;e&nbsp;renderizar&nbsp;a&nbsp;forma.<br>
+&nbsp;<br>
+@author&nbsp;JPChaves<br>
+@version&nbsp;1.0<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.figuras.html#Retangulo">Retangulo</a></dd>
+<dd><a href="src.figuras.html#Figura">Figura</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Retangulo-__init__"><strong>__init__</strong></a>(self, cor_borda, cor_preenchimento, x1, y1, x2, y2)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;<a href="#Retangulo">Retangulo</a>.<br>
+&nbsp;<br>
+@param&nbsp;cor_borda:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;da&nbsp;borda&nbsp;da&nbsp;figura&nbsp;<a href="#Retangulo">Retangulo</a>.<br>
+@param&nbsp;cor_preenchimento:&nbsp;str&nbsp;contendo&nbsp;a&nbsp;cor&nbsp;interna&nbsp;da&nbsp;figura&nbsp;<a href="#Retangulo">Retangulo</a>.<br>
+@param&nbsp;x1:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;y1:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;inical&nbsp;do&nbsp;clique.<br>
+@param&nbsp;x2:&nbsp;int&nbsp;coordenada&nbsp;X&nbsp;final&nbsp;do&nbsp;arrasto.<br>
+@param&nbsp;y2:&nbsp;int&nbsp;coordenada&nbsp;Y&nbsp;final&nbsp;do&nbsp;arrasto.</span></dd></dl>
+
+<dl><dt><a name="Retangulo-atualizar"><strong>atualizar</strong></a>(self, x, y)</dt><dd><span class="code">Atualiza&nbsp;as&nbsp;coordenadas&nbsp;finais&nbsp;da&nbsp;figura&nbsp;de&nbsp;forma&nbsp;dinâmica&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
+&nbsp;<br>
+@param&nbsp;x:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;X&nbsp;do&nbsp;mouse.<br>
+@param&nbsp;y:&nbsp;int&nbsp;nova&nbsp;coordenada&nbsp;Y&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="Retangulo-desenhar"><strong>desenhar</strong></a>(self, canvas, dash=False)</dt><dd><span class="code">Desenha&nbsp;o&nbsp;<a href="#Retangulo">Retangulo</a>&nbsp;no&nbsp;Canvas&nbsp;do&nbsp;Tkinter.<br>
+&nbsp;<br>
+@param&nbsp;canvas:&nbsp;Objeto&nbsp;Canvas&nbsp;onde&nbsp;a&nbsp;figura&nbsp;será&nbsp;renderizada.<br>
+@param&nbsp;dash:&nbsp;bool&nbsp;indicando&nbsp;se&nbsp;a&nbsp;borda&nbsp;deve&nbsp;ser&nbsp;desenhada&nbsp;com&nbsp;traço&nbsp;tracejado&nbsp;(para&nbsp;pré-visualização).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="src.figuras.html#Figura">Figura</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

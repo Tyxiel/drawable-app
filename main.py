@@ -9,7 +9,7 @@ if __name__ == "__main__":
     root.title("Paint Orientado a Objetos (MVC)")
 
     model = DrawingModel()
-    view = DrawingView(root, None) 
+    view = DrawingView(root, None)
     controller = DrawingController(model, view)
     view.configurar_controller(controller)
 
