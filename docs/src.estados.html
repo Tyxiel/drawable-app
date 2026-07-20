@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.estados</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.estados</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ctyxie%5Csource%5Crepos%5Cdrawable-app%5Csrc%5Cestados.py">c:\users\tyxie\source\repos\drawable-app\src\estados.py</a></td></tr></table>
+    <p><span class="code">Módulo&nbsp;que&nbsp;define&nbsp;as&nbsp;classes&nbsp;de&nbsp;estado&nbsp;para&nbsp;cada&nbsp;ferramenta&nbsp;de&nbsp;desenho.<br>
+Responsabilidade:&nbsp;Encapsular&nbsp;o&nbsp;comportamento&nbsp;de&nbsp;clique,&nbsp;arrasto&nbsp;e&nbsp;liberação<br>
+do&nbsp;mouse&nbsp;para&nbsp;cada&nbsp;figura&nbsp;geométrica&nbsp;específica,&nbsp;eliminando&nbsp;condicionais&nbsp;do&nbsp;controlador.<br>
+&nbsp;<br>
+@author:&nbsp;Samuel&nbsp;Campos,&nbsp;João&nbsp;Pedro&nbsp;Chaves,&nbsp;João&nbsp;Victor<br>
+@version:&nbsp;2.0<br>
+@since:&nbsp;2026-07-19</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.estados.html#EstadoCirculo">EstadoCirculo</a>
+</dt><dt class="heading-text"><a href="src.estados.html#EstadoLinha">EstadoLinha</a>
+</dt><dt class="heading-text"><a href="src.estados.html#EstadoOval">EstadoOval</a>
+</dt><dt class="heading-text"><a href="src.estados.html#EstadoPoligono">EstadoPoligono</a>
+</dt><dt class="heading-text"><a href="src.estados.html#EstadoRabisco">EstadoRabisco</a>
+</dt><dt class="heading-text"><a href="src.estados.html#EstadoRetangulo">EstadoRetangulo</a>
+</dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoCirculo">class <strong>EstadoCirculo</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoCirculo">EstadoCirculo</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;desenho&nbsp;de&nbsp;Círculos&nbsp;perfeitos&nbsp;(equiláteros).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoCirculo">EstadoCirculo</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoCirculo-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Recalcula&nbsp;o&nbsp;diâmetro&nbsp;proporcional&nbsp;do&nbsp;círculo&nbsp;usando&nbsp;a&nbsp;maior&nbsp;distância&nbsp;de&nbsp;deslocamento.</span></dd></dl>
+
+<dl><dt><a name="EstadoCirculo-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Cria&nbsp;o&nbsp;rascunho&nbsp;de&nbsp;um&nbsp;Círculo&nbsp;restrito&nbsp;pelas&nbsp;regras&nbsp;de&nbsp;proporção&nbsp;de&nbsp;raio.</span></dd></dl>
+
+<dl><dt><a name="EstadoCirculo-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Armazena&nbsp;o&nbsp;círculo&nbsp;finalizado&nbsp;caso&nbsp;não&nbsp;seja&nbsp;um&nbsp;clique&nbsp;estático&nbsp;(degenerado).</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoCirculo-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoFerramenta">class <strong>EstadoFerramenta</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoFerramenta">EstadoFerramenta</a>(controller)<br>
+&nbsp;<br>
+Classe&nbsp;abstrata&nbsp;base&nbsp;que&nbsp;define&nbsp;a&nbsp;interface&nbsp;comum&nbsp;para&nbsp;todos&nbsp;os&nbsp;estados&nbsp;de&nbsp;ferramentas.<br>
+&nbsp;<br>
+Garante&nbsp;que&nbsp;qualquer&nbsp;ferramenta&nbsp;implemente&nbsp;obrigatoriamente&nbsp;as&nbsp;ações&nbsp;de&nbsp;mouse.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoFerramenta-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<dl><dt><a name="EstadoFerramenta-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Define&nbsp;o&nbsp;comportamento&nbsp;enquanto&nbsp;o&nbsp;mouse&nbsp;é&nbsp;movido&nbsp;com&nbsp;o&nbsp;botão&nbsp;pressionado.</span></dd></dl>
+
+<dl><dt><a name="EstadoFerramenta-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Define&nbsp;o&nbsp;comportamento&nbsp;quando&nbsp;o&nbsp;botão&nbsp;esquerdo&nbsp;do&nbsp;mouse&nbsp;é&nbsp;pressionado.</span></dd></dl>
+
+<dl><dt><a name="EstadoFerramenta-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Define&nbsp;o&nbsp;comportamento&nbsp;quando&nbsp;o&nbsp;botão&nbsp;esquerdo&nbsp;do&nbsp;mouse&nbsp;é&nbsp;liberado.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'ao_arrastar', 'ao_clicar', 'ao_soltar'})</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoLinha">class <strong>EstadoLinha</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoLinha">EstadoLinha</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;desenho&nbsp;de&nbsp;Linhas&nbsp;retas.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoLinha">EstadoLinha</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoLinha-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Atualiza&nbsp;a&nbsp;coordenada&nbsp;final&nbsp;da&nbsp;linha&nbsp;dinamicamente&nbsp;conforme&nbsp;o&nbsp;mouse&nbsp;se&nbsp;move.</span></dd></dl>
+
+<dl><dt><a name="EstadoLinha-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Instancia&nbsp;uma&nbsp;nova&nbsp;Linha&nbsp;com&nbsp;coordenadas&nbsp;iniciais&nbsp;e&nbsp;finais&nbsp;idênticas&nbsp;no&nbsp;ponto&nbsp;do&nbsp;clique.</span></dd></dl>
+
+<dl><dt><a name="EstadoLinha-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Finaliza&nbsp;a&nbsp;construção&nbsp;da&nbsp;linha&nbsp;invocando&nbsp;o&nbsp;fluxo&nbsp;padrão&nbsp;de&nbsp;salvamento&nbsp;do&nbsp;controlador.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoLinha-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoOval">class <strong>EstadoOval</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoOval">EstadoOval</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;desenho&nbsp;de&nbsp;formas&nbsp;Ovais/Elipses.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoOval">EstadoOval</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoOval-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Modifica&nbsp;a&nbsp;caixa&nbsp;delimitadora&nbsp;da&nbsp;elipse&nbsp;simulando&nbsp;o&nbsp;esticamento&nbsp;da&nbsp;forma.</span></dd></dl>
+
+<dl><dt><a name="EstadoOval-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Inicia&nbsp;um&nbsp;objeto&nbsp;Oval&nbsp;delimitado&nbsp;pelas&nbsp;coordenadas&nbsp;do&nbsp;clique.</span></dd></dl>
+
+<dl><dt><a name="EstadoOval-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Conclui&nbsp;a&nbsp;inserção&nbsp;da&nbsp;forma&nbsp;elíptica&nbsp;na&nbsp;lista&nbsp;de&nbsp;renderização&nbsp;estável.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoOval-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoPoligono">class <strong>EstadoPoligono</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoPoligono">EstadoPoligono</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;Polígonos&nbsp;Regulares&nbsp;de&nbsp;N&nbsp;lados.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoPoligono">EstadoPoligono</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoPoligono-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Recalcula&nbsp;a&nbsp;posição&nbsp;trigonométrica&nbsp;de&nbsp;todos&nbsp;os&nbsp;vértices&nbsp;do&nbsp;polígono&nbsp;baseado&nbsp;no&nbsp;raio.</span></dd></dl>
+
+<dl><dt><a name="EstadoPoligono-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Instancia&nbsp;um&nbsp;polígono&nbsp;recuperando&nbsp;dinamicamente&nbsp;a&nbsp;quantidade&nbsp;de&nbsp;lados&nbsp;definida&nbsp;no&nbsp;Spinbox.</span></dd></dl>
+
+<dl><dt><a name="EstadoPoligono-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Fixa&nbsp;o&nbsp;polígono&nbsp;regular&nbsp;na&nbsp;tela&nbsp;e&nbsp;limpa&nbsp;o&nbsp;ponteiro&nbsp;temporário.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoPoligono-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoRabisco">class <strong>EstadoRabisco</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoRabisco">EstadoRabisco</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;desenho&nbsp;livre&nbsp;(Rabisco).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoRabisco">EstadoRabisco</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoRabisco-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Acumula&nbsp;e&nbsp;registra&nbsp;todos&nbsp;os&nbsp;novos&nbsp;pontos&nbsp;geométricos&nbsp;gerados&nbsp;pela&nbsp;trajetória&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="EstadoRabisco-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Cria&nbsp;um&nbsp;novo&nbsp;objeto&nbsp;Rabisco&nbsp;inserindo&nbsp;o&nbsp;primeiro&nbsp;ponto&nbsp;da&nbsp;sequência.</span></dd></dl>
+
+<dl><dt><a name="EstadoRabisco-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Finaliza&nbsp;o&nbsp;desenho&nbsp;livre&nbsp;e&nbsp;envia&nbsp;o&nbsp;conjunto&nbsp;de&nbsp;pontos&nbsp;para&nbsp;validação&nbsp;no&nbsp;controlador.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoRabisco-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EstadoRetangulo">class <strong>EstadoRetangulo</strong></a>(<a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#EstadoRetangulo">EstadoRetangulo</a>(controller)<br>
+&nbsp;<br>
+Estado&nbsp;específico&nbsp;para&nbsp;a&nbsp;ferramenta&nbsp;de&nbsp;desenho&nbsp;de&nbsp;Retângulos.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.estados.html#EstadoRetangulo">EstadoRetangulo</a></dd>
+<dd><a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EstadoRetangulo-ao_arrastar"><strong>ao_arrastar</strong></a>(self, event)</dt><dd><span class="code">Redimensiona&nbsp;o&nbsp;vértice&nbsp;oposto&nbsp;do&nbsp;retângulo&nbsp;de&nbsp;acordo&nbsp;com&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.</span></dd></dl>
+
+<dl><dt><a name="EstadoRetangulo-ao_clicar"><strong>ao_clicar</strong></a>(self, event)</dt><dd><span class="code">Cria&nbsp;o&nbsp;rascunho&nbsp;de&nbsp;um&nbsp;Retângulo&nbsp;aplicando&nbsp;as&nbsp;cores&nbsp;de&nbsp;borda&nbsp;e&nbsp;preenchimento&nbsp;atuais.</span></dd></dl>
+
+<dl><dt><a name="EstadoRetangulo-ao_soltar"><strong>ao_soltar</strong></a>(self, event)</dt><dd><span class="code">Valida&nbsp;as&nbsp;dimensões&nbsp;e&nbsp;insere&nbsp;o&nbsp;retângulo&nbsp;permanentemente&nbsp;no&nbsp;modelo&nbsp;de&nbsp;dados.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><a name="EstadoRetangulo-__init__"><strong>__init__</strong></a>(self, controller)</dt><dd><span class="code">Construtor&nbsp;da&nbsp;classe&nbsp;base&nbsp;de&nbsp;estado.<br>
+&nbsp;<br>
+@param&nbsp;controller:&nbsp;Instância&nbsp;do&nbsp;DrawingController&nbsp;para&nbsp;permitir&nbsp;a&nbsp;manipulação&nbsp;do&nbsp;Model&nbsp;e&nbsp;View.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.estados.html#EstadoFerramenta">EstadoFerramenta</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

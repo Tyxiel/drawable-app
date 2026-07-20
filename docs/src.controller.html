@@ -10,10 +10,11 @@
 <td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.controller</strong></td>
 <td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ctyxie%5Csource%5Crepos%5Cdrawable-app%5Csrc%5Ccontroller.py">c:\users\tyxie\source\repos\drawable-app\src\controller.py</a></td></tr></table>
     <p><span class="code">Módulo&nbsp;controlador&nbsp;que&nbsp;orquestra&nbsp;a&nbsp;interação&nbsp;entre&nbsp;a&nbsp;View&nbsp;e&nbsp;o&nbsp;Model.<br>
+Aplica&nbsp;o&nbsp;padrão&nbsp;State&nbsp;para&nbsp;evitar&nbsp;condicionais&nbsp;nas&nbsp;ferramentas&nbsp;de&nbsp;desenho.<br>
 &nbsp;<br>
 @author:&nbsp;Samuel&nbsp;Campos,&nbsp;João&nbsp;Pedro&nbsp;Chaves,&nbsp;João&nbsp;Victor<br>
-@version:&nbsp;1.0<br>
-@since:&nbsp;2026-07-12</span></p>
+@version:&nbsp;2.0<br>
+@since:&nbsp;2026-07-19</span></p>
 <p>
 <table class="section">
 <tr class="decor pkg-content-decor heading-text">
@@ -45,48 +46,33 @@
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#DrawingController">DrawingController</a>(model,&nbsp;view)<br>
 &nbsp;<br>
-Classe&nbsp;que&nbsp;coordena&nbsp;as&nbsp;ações&nbsp;do&nbsp;usuário,&nbsp;atualizando&nbsp;o&nbsp;modelo&nbsp;e&nbsp;a&nbsp;view.<br>
-&nbsp;<br>
-Responsabilidade:&nbsp;processar&nbsp;eventos&nbsp;de&nbsp;clique/arrasto,&nbsp;gerenciar&nbsp;cores,<br>
-persistência&nbsp;(salvar/abrir)&nbsp;e&nbsp;comando&nbsp;desfazer.<br>
+Controlador&nbsp;central&nbsp;que&nbsp;delega&nbsp;ações&nbsp;de&nbsp;mouse&nbsp;ao&nbsp;estado&nbsp;ativo&nbsp;da&nbsp;ferramenta.<br>
 &nbsp;<br>
 @author:&nbsp;Samuel&nbsp;Campos,&nbsp;João&nbsp;Pedro&nbsp;Chaves,&nbsp;João&nbsp;Victor<br>
-@version:&nbsp;1.0<br>
-@since:&nbsp;2026-07-12<br>&nbsp;</span></td></tr>
+@version:&nbsp;2.0<br>
+@since:&nbsp;2026-07-19<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn">Methods defined here:<br>
-<dl><dt><a name="DrawingController-__init__"><strong>__init__</strong></a>(self, model, view)</dt><dd><span class="code">Construtor&nbsp;do&nbsp;controlador.<br>
-&nbsp;<br>
-@param&nbsp;model:&nbsp;instância&nbsp;de&nbsp;DrawingModel.<br>
-@param&nbsp;view:&nbsp;instância&nbsp;de&nbsp;DrawingView.</span></dd></dl>
+<dl><dt><a name="DrawingController-__init__"><strong>__init__</strong></a>(self, model, view)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-abrir_arquivo"><strong>abrir_arquivo</strong></a>(self)</dt><dd><span class="code">Abre&nbsp;um&nbsp;arquivo&nbsp;.pkl&nbsp;contendo&nbsp;uma&nbsp;lista&nbsp;de&nbsp;figuras&nbsp;e&nbsp;as&nbsp;carrega&nbsp;no&nbsp;modelo.<br>
-Substitui&nbsp;as&nbsp;figuras&nbsp;atuais&nbsp;e&nbsp;redesenha&nbsp;a&nbsp;tela.</span></dd></dl>
+<dl><dt><a name="DrawingController-abrir_arquivo"><strong>abrir_arquivo</strong></a>(self)</dt><dd><span class="code">Carrega&nbsp;figuras&nbsp;de&nbsp;um&nbsp;arquivo&nbsp;.pkl&nbsp;e&nbsp;substitui&nbsp;o&nbsp;desenho&nbsp;atual.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-atualizar_figura_nova"><strong>atualizar_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Atualiza&nbsp;a&nbsp;figura&nbsp;em&nbsp;construção&nbsp;durante&nbsp;o&nbsp;arrasto&nbsp;do&nbsp;mouse.<br>
-&nbsp;<br>
-@param&nbsp;event:&nbsp;evento&nbsp;do&nbsp;Tkinter&nbsp;com&nbsp;novas&nbsp;coordenadas.</span></dd></dl>
+<dl><dt><a name="DrawingController-atualizar_figura_nova"><strong>atualizar_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Encaminha&nbsp;o&nbsp;arrasto&nbsp;para&nbsp;o&nbsp;estado&nbsp;da&nbsp;ferramenta&nbsp;ativa.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-desfazer"><strong>desfazer</strong></a>(self, event=None)</dt><dd><span class="code">Remove&nbsp;a&nbsp;última&nbsp;figura&nbsp;adicionada&nbsp;e&nbsp;redesenha&nbsp;o&nbsp;canvas.<br>
-&nbsp;<br>
-@param&nbsp;event:&nbsp;evento&nbsp;opcional&nbsp;(tecla&nbsp;Ctrl+Z).</span></dd></dl>
+<dl><dt><a name="DrawingController-desfazer"><strong>desfazer</strong></a>(self, event=None)</dt><dd><span class="code">Remove&nbsp;a&nbsp;última&nbsp;figura&nbsp;finalizada&nbsp;e&nbsp;redesenha.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-escolher_cor"><strong>escolher_cor</strong></a>(self, tipo)</dt><dd><span class="code">Abre&nbsp;o&nbsp;seletor&nbsp;de&nbsp;cores&nbsp;e&nbsp;atualiza&nbsp;a&nbsp;cor&nbsp;correspondente&nbsp;no&nbsp;modelo&nbsp;e&nbsp;na&nbsp;view.<br>
-&nbsp;<br>
-@param&nbsp;tipo:&nbsp;"borda"&nbsp;ou&nbsp;"preenchimento".</span></dd></dl>
+<dl><dt><a name="DrawingController-escolher_cor"><strong>escolher_cor</strong></a>(self, tipo)</dt><dd><span class="code">Abre&nbsp;o&nbsp;seletor&nbsp;de&nbsp;cores&nbsp;e&nbsp;atualiza&nbsp;a&nbsp;cor&nbsp;correspondente&nbsp;no&nbsp;modelo&nbsp;e&nbsp;na&nbsp;view.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-incluir_figura_nova"><strong>incluir_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Finaliza&nbsp;a&nbsp;figura&nbsp;em&nbsp;construção&nbsp;e&nbsp;a&nbsp;adiciona&nbsp;à&nbsp;lista&nbsp;de&nbsp;figuras,&nbsp;se&nbsp;não&nbsp;for&nbsp;degenerada.<br>
-&nbsp;<br>
-@param&nbsp;event:&nbsp;evento&nbsp;de&nbsp;liberação&nbsp;do&nbsp;botão&nbsp;do&nbsp;mouse.</span></dd></dl>
+<dl><dt><a name="DrawingController-finalizar_figura_comum"><strong>finalizar_figura_comum</strong></a>(self)</dt><dd><span class="code">Valida&nbsp;a&nbsp;figura&nbsp;em&nbsp;construção,&nbsp;aplica&nbsp;as&nbsp;cores&nbsp;atuais&nbsp;e&nbsp;a&nbsp;adiciona&nbsp;à&nbsp;lista.<br>
+Esse&nbsp;método&nbsp;é&nbsp;chamado&nbsp;por&nbsp;todos&nbsp;os&nbsp;estados&nbsp;concretos&nbsp;no&nbsp;momento&nbsp;de&nbsp;soltar.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-iniciar_figura_nova"><strong>iniciar_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Cria&nbsp;uma&nbsp;nova&nbsp;figura&nbsp;no&nbsp;ponto&nbsp;onde&nbsp;o&nbsp;mouse&nbsp;foi&nbsp;pressionado.<br>
-&nbsp;<br>
-@param&nbsp;event:&nbsp;evento&nbsp;do&nbsp;Tkinter&nbsp;contendo&nbsp;as&nbsp;coordenadas&nbsp;x,&nbsp;y.</span></dd></dl>
+<dl><dt><a name="DrawingController-incluir_figura_nova"><strong>incluir_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Encaminha&nbsp;a&nbsp;liberação&nbsp;do&nbsp;mouse&nbsp;para&nbsp;o&nbsp;estado&nbsp;ativo.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-limpar_preenchimento"><strong>limpar_preenchimento</strong></a>(self)</dt><dd><span class="code">Remove&nbsp;a&nbsp;cor&nbsp;de&nbsp;preenchimento&nbsp;(torna&nbsp;transparente)&nbsp;e&nbsp;atualiza&nbsp;a&nbsp;view.</span></dd></dl>
+<dl><dt><a name="DrawingController-iniciar_figura_nova"><strong>iniciar_figura_nova</strong></a>(self, event)</dt><dd><span class="code">Encaminha&nbsp;o&nbsp;clique&nbsp;para&nbsp;o&nbsp;estado&nbsp;da&nbsp;ferramenta&nbsp;ativa.</span></dd></dl>
 
-<dl><dt><a name="DrawingController-salvar"><strong>salvar</strong></a>(self)</dt><dd><span class="code">Salva&nbsp;a&nbsp;lista&nbsp;de&nbsp;figuras&nbsp;em&nbsp;um&nbsp;arquivo&nbsp;.pkl&nbsp;usando&nbsp;pickle.<br>
-Abre&nbsp;uma&nbsp;caixa&nbsp;de&nbsp;diálogo&nbsp;para&nbsp;escolher&nbsp;o&nbsp;local&nbsp;e&nbsp;nome&nbsp;do&nbsp;arquivo.</span></dd></dl>
+<dl><dt><a name="DrawingController-limpar_preenchimento"><strong>limpar_preenchimento</strong></a>(self)</dt><dd><span class="code">Remove&nbsp;a&nbsp;cor&nbsp;de&nbsp;preenchimento&nbsp;e&nbsp;reseta&nbsp;o&nbsp;botão&nbsp;correspondente.</span></dd></dl>
+
+<dl><dt><a name="DrawingController-salvar"><strong>salvar</strong></a>(self)</dt><dd><span class="code">Salva&nbsp;a&nbsp;lista&nbsp;de&nbsp;figuras&nbsp;em&nbsp;um&nbsp;arquivo&nbsp;.pkl.</span></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>
